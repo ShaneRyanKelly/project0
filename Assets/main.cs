@@ -7,17 +7,42 @@ public class main : MonoBehaviour
     bool running = true;
     string playerName = "Ralph";
     int score = 0;
+    public int PlayerLives = 3;
+
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Welcome to the Game!");
         PlayTheGame();
+        HealthStatus();
+        DisplayParty();
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckInput();
+    }
+
+    public void DisplayParty()
+    {
+        List<string> QuestPartyMembers = new List<string>() { "Grim", "Merlin", "Sterling" };
+        int listLength = QuestPartyMembers.Count;
+        for (int i = 0; i < QuestPartyMembers.Count; i++)
+        {
+            Debug.LogFormat("Index: {0} - {1}", i, QuestPartyMembers[i]);
+            if (QuestPartyMembers[i] == "Merlin")
+                Debug.Log("Hello Merlin!");
+        }
+    }
+
+    public void HealthStatus(){
+        while (PlayerLives > 0)
+        {
+            Debug.Log("Still alive!");
+            PlayerLives--;
+        }
+        Debug.Log("Player KO'd...");
     }
 
     void PlayTheGame()
