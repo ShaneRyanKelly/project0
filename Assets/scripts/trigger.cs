@@ -18,6 +18,14 @@ public class trigger : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider myCollider){
-        SceneManager.LoadScene("SampleScene1-2");
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "SampleScene")
+        {
+            SceneManager.LoadScene("SampleScene1-2");
+        }
+        else if (scene.name == "SampleScene1-2")
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 }
