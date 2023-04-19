@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private Rigidbody _rb;
     public float JumpVelocity = 5f;
     private bool _isJumping;
+    private bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,25 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate(){
-        if (_isJumping){
+        if (_isJumping && isGrounded){
             _rb.AddForce(Vector3.up * JumpVelocity, ForceMode.Impulse);
         }
 
         _isJumping = false;
+    }
+
+    void OnCollisionEnter(Collision collision){
+        if (collision.gameObject.CompareTag("ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    void OnCollisionExit(Collision collision){
+        if (collision.gameObject.CompareTag("ground"))
+        {
+            isGrounded = false;
+        }
     }
 
     // Update is called once per frame
@@ -33,7 +48,6 @@ public class Player : MonoBehaviour
 
         this.transform.Translate(Vector3.forward * yVector * Time.deltaTime);
         this.transform.Rotate(Vector3.up * xVector * Time.deltaTime);
-
         _isJumping |= Input.GetKeyDown(KeyCode.Space);
     }
 }
