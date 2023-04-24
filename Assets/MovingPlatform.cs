@@ -21,11 +21,20 @@ public class MovingPlatform : MonoBehaviour
     {
         if (forward)
         {
-            transform.position += new Vector3(speed, 0f, 0f);
+            transform.position += new Vector3(speed*.001f, 0f, 0f);
+
+            if (transform.position.x >= moveDistance)
+            {
+                forward = false;
+            }
         }
         else
         {
-
+            transform.position -= new Vector3(speed * .01f, 0f, 0f);
+            if (transform.position.x <= startPosition.x)
+            {
+                forward = true;
+            }
         }
     }
 }
