@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     public float JumpVelocity = 5f;
     private bool _isJumping;
     private bool isGrounded;
+    private bool onPlatform;
+    public GameObject platform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +34,19 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+        else if (collision.gameObject.CompareTag("platform")){
+            onPlatform = true;
+        }
     }
 
     void OnCollisionExit(Collision collision){
         if (collision.gameObject.CompareTag("ground"))
         {
             isGrounded = false;
+        }
+        else if (collision.gameObject.CompareTag("platform")){
+            onPlatform = false;
+            this.transform.parent = null;
         }
     }
 
@@ -47,7 +57,13 @@ public class Player : MonoBehaviour
         yVector = Input.GetAxis("Vertical") * moveSpeed;
 
         this.transform.Translate(Vector3.forward * yVector * Time.deltaTime);
+
+        if (onPlatform){
+            this.transform.parent = platform.transform;
+        }
+
         this.transform.Rotate(Vector3.up * xVector * Time.deltaTime);
+
         _isJumping |= Input.GetKeyDown(KeyCode.Space);
     }
 }

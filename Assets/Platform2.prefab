@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 2942245108715806924}
   - component: {fileID: 6178113240373786402}
   - component: {fileID: -2543087893617480676}
+  - component: {fileID: 4182121532417568715}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: Platform2
   m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,10 +106,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6207389076789804814}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66a00e54c7543814ab2f0d8a42ba3c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
   forward: 1
+--- !u!114 &4182121532417568715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6207389076789804814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f7c7bfa56aa14b45ac8f0d9493d4407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  forward: 1
+  rotateTimeout: 1000
