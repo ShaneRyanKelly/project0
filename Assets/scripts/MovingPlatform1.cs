@@ -10,7 +10,7 @@ public class MovingPlatform1 : MonoBehaviour
     public bool forward = true;
     public int rotateTimeout;
     private int timeOutMax;
-    private bool rotating = false;
+    //private bool rotating = false;
 
 
     // Start is called before the first frame update

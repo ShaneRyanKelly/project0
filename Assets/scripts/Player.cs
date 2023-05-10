@@ -48,6 +48,10 @@ public class Player : MonoBehaviour
             onPlatform = false;
             this.transform.parent = null;
         }
+        else if (collision.gameObject.CompareTag("disappearingplatform"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     // Update is called once per frame

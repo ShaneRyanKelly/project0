@@ -25,7 +25,11 @@ public class trigger : MonoBehaviour
         }
         else if (scene.name == "SampleScene1-2")
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("SampleScene1-3");
+        }
+        else if (scene.name == "SampleScene1-3")
+        {
+            SceneManager.LoadScene("SampleScene1-4");
         }
     }
 }
